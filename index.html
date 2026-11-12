@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>ZeruIA · Sistema de Gestão com NF-e, NFC-e e Financeiro na Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZeruIA (antiga Minas Fiscal): sistema de gestão empresarial na web com emissão de NF-e e NFC-e, PDV, estoque, financeiro, bancos, CRM, Sintegra, gestão de transportes e gestão da equipe com inteligência artificial. Também desenvolvemos sistemas sob medida. Solicite uma demonstração gratuita.">
+<meta name="theme-color" content="#0e211d">
+<link rel="canonical" href="https://www.zeruia.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZeruIA · Gestão Comercial Inteligente">
+<meta property="og:description" content="NF-e, NFC-e, PDV, estoque, financeiro, bancos e CRM integrados, acessando de qualquer lugar pela internet.">
+<meta property="og:image" content="https://www.zeruia.com.br/zeruia-logo.jpg">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%2318c99e'/%3E%3Cstop offset='1' stop-color='%2320c9e0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230e211d'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='800' font-size='34' text-anchor='middle' fill='url(%23g)'%3EZ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dark:#0e211d;
+    --dark2:#15332c;
+    --accent1:#18c99e;
+    --accent2:#20c9e0;
+    --accent3:#f5d90a;
+    --light:#f4f8f7;
+    --text:#233531;
+    --muted:#5b6d68;
+    --radius:18px;
+    --zap:#25d366;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  section[id]{scroll-margin-top:76px;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .grad-text{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  header{background:var(--dark);position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.15);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 16px;max-width:1180px;margin:0 auto;gap:10px;flex-wrap:nowrap;}
+  .logo{font-size:22px;font-weight:800;color:#fff;flex-shrink:0;}
+  .logo span{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .nav-links{display:flex;gap:18px;flex-wrap:nowrap;}
+  .nav-links a{color:#dfeae7;font-weight:500;font-size:13.5px;white-space:nowrap;transition:color .2s;}
+  .nav-links a:hover{color:var(--accent2);}
+  .nav-cta{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+  .btn{display:inline-block;padding:12px 24px;border-radius:50px;font-weight:600;font-size:14px;cursor:pointer;border:2px solid transparent;transition:transform .15s ease,opacity .2s;font-family:inherit;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04231c;}
+  .btn-outline{border:2px solid #3a544d;color:#fff;}
+  .btn-outline:hover{border-color:var(--accent2);}
+  .nav-cta .btn{padding:10px 14px;font-size:13px;white-space:nowrap;}
+  .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+
+  .hero{background:radial-gradient(circle at 80% 20%, #1c3d35 0%, var(--dark) 60%);color:#fff;padding:90px 0 70px;position:relative;overflow:hidden;}
+  .hero .container{display:flex;align-items:center;gap:50px;flex-wrap:wrap;}
+  .hero-text{flex:1 1 480px;}
+  .eyebrow{color:var(--accent2);font-weight:600;letter-spacing:1.5px;font-size:13px;text-transform:uppercase;margin-bottom:14px;display:block;}
+  .hero h1{font-size:44px;font-weight:800;line-height:1.2;margin-bottom:22px;}
+  .hero p{font-size:17px;color:#c9d6d2;max-width:540px;margin-bottom:28px;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-checks{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-size:13.5px;color:#c9d6d2;}
+  .hero-checks span::before{content:"✓ ";color:var(--accent1);font-weight:700;}
+  .hero-visual{flex:1 1 420px;position:relative;}
+  .mock-card{background:#fff;border-radius:20px;padding:22px;color:var(--text);box-shadow:0 30px 60px rgba(0,0,0,.35);}
+  .mock-card h4{font-size:14px;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+  .mock-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #eef2f1;font-size:14px;gap:12px;}
+  .mock-row:last-child{border-bottom:none;}
+  .mock-row b{white-space:nowrap;}
+  .mock-tag{background:#e6faf4;color:#0e9a78;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
+
+  .strip{background:var(--light);padding:50px 0;}
+  .strip .container{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;}
+  .strip-item{flex:1 1 220px;background:#fff;border-radius:16px;padding:22px 24px;box-shadow:0 6px 18px rgba(20,50,45,.06);}
+  .strip-item b{display:block;font-size:20px;margin-bottom:4px;color:var(--dark);}
+  .strip-item span{color:var(--muted);font-size:14px;}
+
+  section{padding:80px 0;}
+  .section-title{font-size:32px;font-weight:800;color:var(--dark);margin-bottom:18px;}
+  .section-sub{color:var(--muted);font-size:16px;max-width:680px;margin-bottom:40px;}
+
+  .about{display:flex;gap:50px;flex-wrap:wrap;align-items:flex-start;}
+  .about-text{flex:1 1 400px;}
+  .about-logo{display:block;width:100%;max-width:340px;height:auto;margin:0 0 22px;}
+  .about-text p{margin-bottom:18px;color:var(--text);font-size:15.5px;}
+  .callout{background:linear-gradient(135deg,var(--dark2),var(--dark));border-left:5px solid var(--accent3);color:#eafaf5;padding:26px 28px;border-radius:14px;margin:26px 0;font-size:15px;}
+
+  .feature-list{flex:1 1 580px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .feature-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid #e7efec;border-radius:14px;padding:18px 20px;transition:box-shadow .2s, border-color .2s;}
+  .feature-item:hover{box-shadow:0 10px 24px rgba(20,50,45,.08);border-color:var(--accent1);}
+  .feature-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#e6faf4;display:flex;align-items:center;justify-content:center;color:#0e9a78;font-size:20px;}
+  .feature-item h4{font-size:15.5px;margin-bottom:3px;color:var(--dark);}
+  .feature-item p{font-size:13.5px;color:var(--muted);}
+
+  .modules{background:var(--light);}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .module-card{background:#fff;border-radius:16px;padding:26px 22px;text-align:left;box-shadow:0 6px 18px rgba(20,50,45,.06);}
+  .module-card .feature-icon{margin-bottom:14px;}
+  .card-destaque{grid-column:1/-1;display:flex;gap:18px;align-items:flex-start;border:2px solid var(--accent1);}
+  .module-card.card-destaque .feature-icon{margin-bottom:0;}
+  .card-destaque .novo{display:inline-block;background:#dff5ec;color:#0b6b52;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-left:8px;vertical-align:middle;}
+  .card-destaque a{color:#0e9a78;font-weight:600;white-space:nowrap;}
+  .module-card h4{font-size:15.5px;margin-bottom:6px;color:var(--dark);}
+  .module-card p{font-size:13.5px;color:var(--muted);}
+
+  .grid-4b{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .why-card{border:1px solid #e7efec;border-radius:18px;padding:30px 24px;text-align:center;transition:transform .2s, box-shadow .2s;}
+  .why-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(20,50,45,.1);}
+  .why-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:#04231c;font-size:24px;}
+  .why-card h4{font-size:16.5px;margin-bottom:8px;color:var(--dark);}
+  .why-card p{font-size:14px;color:var(--muted);}
+
+  .trabalho{background:linear-gradient(135deg,var(--dark2),var(--dark));color:#eafaf5;}
+  .trabalho .section-title{color:#fff;}
+  .trabalho .section-sub{color:#c9d6d2;}
+  .trab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .trab-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px;}
+  .trab-item h4{font-size:15.5px;margin-bottom:6px;color:#fff;}
+  .trab-item p{font-size:13.5px;color:#b9cbc6;}
+  .trab-ia{margin-top:26px;background:#fff;color:var(--text);border-radius:18px;padding:26px 28px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;box-shadow:0 20px 40px rgba(0,0,0,.25);}
+  .trab-ia .why-icon{margin:0;flex:0 0 56px;}
+  .trab-ia div{flex:1 1 320px;}
+  .trab-ia h3{font-size:18px;color:var(--dark);margin-bottom:6px;}
+  .trab-ia p{font-size:14.5px;color:var(--muted);}
+  .passos{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:12px;font-size:12.5px;font-weight:600;}
+  .passos span{background:#e6faf4;color:#0e9a78;border-radius:20px;padding:4px 12px;}
+
+  .medida{background:var(--light);}
+  .medida-top{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start;margin-bottom:34px;}
+  .medida-top .medida-txt{flex:1 1 460px;}
+  .medida-top .section-sub{margin-bottom:0;}
+  .medida-pontos{flex:1 1 300px;display:grid;gap:10px;}
+  .medida-pontos span{background:#fff;border:1px solid #e7efec;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:500;color:var(--dark);}
+  .medida-pontos span::before{content:"✓ ";color:var(--accent1);font-weight:700;}
+  .projeto{background:#fff;border-radius:20px;padding:30px;box-shadow:0 6px 18px rgba(20,50,45,.06);}
+  .projeto-cab{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:6px;}
+  .projeto-cab h3{font-size:21px;color:var(--dark);}
+  .selo-ok{background:#dff5ec;color:#0b6b52;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+  .proj-proximo{margin-top:20px;font-size:13.5px;color:var(--muted);}
+  .selo-dev{background:#fff7cc;color:#7a6400;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+  .projeto > p{color:var(--muted);font-size:14.5px;margin-bottom:22px;max-width:760px;}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 28px;}
+  .proj-grid h4{font-size:15px;color:var(--dark);margin-bottom:6px;}
+  .proj-grid ul{display:grid;gap:4px;}
+  .proj-grid li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;}
+  .proj-grid li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent1);}
+
+  .faq{background:#fff;}
+  .faq-list{max-width:820px;display:flex;flex-direction:column;gap:12px;}
+  .faq-list details{background:#fff;border:1px solid #e7efec;border-radius:14px;padding:16px 20px;}
+  .faq-list summary{cursor:pointer;font-weight:600;color:var(--dark);font-size:15.5px;}
+  .faq-list details p{margin-top:10px;color:var(--muted);font-size:14.5px;}
+
+  .cta-band{background:linear-gradient(120deg,var(--dark) 0%, #103b32 100%);color:#fff;}
+  .cta-band .container{display:flex;gap:50px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+  .cta-left{flex:1 1 380px;}
+  .cta-left h2{font-size:30px;font-weight:800;margin-bottom:14px;}
+  .cta-left p{color:#c9d6d2;font-size:15.5px;margin-bottom:22px;max-width:440px;}
+  .cta-contatos{display:flex;flex-direction:column;gap:10px;font-size:15px;}
+  .cta-contatos a{color:#dfeae7;display:inline-flex;align-items:center;gap:8px;}
+  .cta-contatos a:hover{color:var(--accent2);}
+  .cta-form{flex:1 1 380px;background:#fff;border-radius:18px;padding:30px;color:var(--text);box-shadow:0 30px 60px rgba(0,0,0,.3);position:relative;}
+  .cta-form h3{font-size:18px;margin-bottom:18px;color:var(--dark);}
+  .cta-form input,.cta-form textarea{width:100%;padding:13px 14px;border:1px solid #dfe7e4;border-radius:10px;margin-bottom:14px;font-family:inherit;font-size:14px;color:var(--text);background:#fff;}
+  .cta-form textarea{resize:vertical;min-height:80px;}
+  .cta-form input:focus,.cta-form textarea:focus{outline:none;border-color:var(--accent1);box-shadow:0 0 0 3px rgba(24,201,158,.15);}
+  .cta-form .linha{display:flex;gap:12px;}
+  .cta-form .linha input{flex:1;min-width:0;}
+  .cta-form button{width:100%;padding:14px;border:none;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04231c;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;}
+  .cta-form button:disabled{opacity:.6;cursor:wait;}
+  .cta-form .nota{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .cta-form .mel{position:absolute;left:-5000px;width:1px;height:1px;opacity:0;}
+  .form-ok{text-align:center;padding:10px 0;}
+  .form-ok h3{color:#0e9a78;font-size:20px;margin-bottom:8px;}
+  .form-ok p{color:var(--muted);font-size:14.5px;margin-bottom:16px;}
+  .btn-zap{background:var(--zap);color:#06341b;}
+  .form-erro{color:#c62828;font-size:13.5px;margin-bottom:10px;display:none;}
+
+  footer{background:var(--dark);color:#9fb3ae;padding:36px 0;text-align:center;font-size:14px;}
+  footer .logo{margin-bottom:10px;justify-content:center;display:flex;}
+  footer .contatos{margin:6px 0 10px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
+  footer .contatos a:hover{color:var(--accent2);}
+
+  .zap-flutuante{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--zap);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s;}
+  .zap-flutuante:hover{transform:scale(1.07);}
+  .zap-flutuante svg{width:32px;height:32px;fill:#fff;}
+
+  /* menu vira "hambúrguer" antes de apertar: são 8 links + 2 botões */
+  @media(max-width:1120px){
+    .nav-links{position:absolute;top:64px;left:0;right:0;background:var(--dark);flex-direction:column;padding:20px 24px;gap:18px;display:none;}
+    .nav-links.open{display:flex;}
+    .menu-toggle{display:block;}
+  }
+  @media(max-width:900px){
+    .grid-4,.grid-4b{grid-template-columns:repeat(2,1fr);}
+    .trab-grid,.proj-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:34px;}
+  }
+  @media(max-width:760px){
+    .nav-cta .btn-outline{display:none;}
+    .grid-4,.grid-4b,.trab-grid,.proj-grid,.feature-list{grid-template-columns:1fr;}
+    .projeto,.trab-ia{padding:22px;}
+    .cta-band .container{flex-direction:column;}
+    .hero{padding:60px 0 50px;}
+    .hero h1{font-size:30px;}
+    section{padding:60px 0;}
+    .section-title{font-size:26px;}
+    .cta-form .linha{flex-direction:column;gap:0;}
+  }
+  @media(max-width:400px){
+    .nav-cta .btn{padding:9px 10px;font-size:12px;}
+    .logo{font-size:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Zeru<span>IA</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#funcionalidades">Funcionalidades</a></li>
+      <li><a href="#modulos">Módulos</a></li>
+      <li><a href="#trabalho">Gestão da Equipe</a></li>
+      <li><a href="#porque">Diferenciais</a></li>
+      <li><a href="#sob-medida">Sob Medida</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#sobre" class="btn btn-outline">Conhecer o Sistema</a>
+      <a href="#contato" class="btn btn-primary">Solicitar Demonstração</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir o menu">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <span class="eyebrow">Minas Fiscal agora é ZeruIA</span>
+      <h1>Gestão Comercial <span class="grad-text">Inteligente</span> para sua empresa</h1>
+      <p>Sistema completo de gestão que integra faturamento, emissão de NF-e e NFC-e, PDV, estoque, financeiro, bancos, CRM e rotinas fiscais. Feito para pequenas e médias empresas que querem automação, organização e mais eficiência, acessando de qualquer lugar pela internet.</p>
+      <div class="hero-btns">
+        <a href="#contato" class="btn btn-primary">Solicitar Demonstração</a>
+        <a href="#modulos" class="btn btn-outline">Ver os Módulos</a>
+      </div>
+      <div class="hero-checks">
+        <span>100% na web</span><span>NF-e e NFC-e direto na SEFAZ</span><span>Permissões por usuário</span><span>Suporte próximo</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="mock-card">
+        <h4>ZeruIA · CRES-NF-e Web <span class="mock-tag">Online</span></h4>
+        <div class="mock-row"><span>Emissão de NF-e / NFC-e</span><b>Direto na SEFAZ</b></div>
+        <div class="mock-row"><span>PDV · Venda rápida no caixa</span><b>Como supermercado</b></div>
+        <div class="mock-row"><span>Estoque</span><b>Baixa automática</b></div>
+        <div class="mock-row"><span>Contas a Pagar / Receber</span><b>Atualizado</b></div>
+        <div class="mock-row"><span>Extrato bancário</span><b>Importado</b></div>
+        <div class="mock-row"><span>Fluxo de Caixa e DRE</span><b>Em tempo real</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="container">
+    <div class="strip-item"><b>Comercial</b><span>Lojas, atacado e varejo</span></div>
+    <div class="strip-item"><b>Industrial</b><span>Empresas industriais</span></div>
+    <div class="strip-item"><b>Serviços</b><span>Prestadoras de serviço e O.S.</span></div>
+    <div class="strip-item"><b>PMEs</b><span>Pequenas e médias empresas</span></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container about">
+    <div class="about-text">
+      <img src="zeruia-logo.jpg" alt="ZeruIA" class="about-logo" width="760" height="566" loading="lazy">
+      <span class="eyebrow" style="color:#0e9a78;">Sobre o sistema</span>
+      <h2 class="section-title">Software de Gestão Empresarial</h2>
+      <p>O ZeruIA é um software de gestão totalmente integrado: controla estoque, cadastros, funcionários, ordens de serviço, emissão de NF-e e NFC-e, rotinas fiscais, relacionamento com clientes (CRM), caixa, bancos, gestão de transportes e muito mais.</p>
+      <p>É a evolução do CRES-NF-e, sistema usado há anos por empresas comerciais, industriais e prestadoras de serviço, agora funcionando pela internet: sem instalação, com os dados guardados em servidor seguro e acesso do escritório, da loja ou de casa.</p>
+      <div class="callout">Tudo conversa entre si: ao emitir a nota fiscal, o estoque é baixado automaticamente, as contas a receber e o fluxo de caixa são alimentados, a comissão de venda é registrada e o atendimento fica no histórico do cliente (CRM). Do mesmo jeito, ao importar o XML de uma nota de entrada, o sistema atualiza o estoque, o cadastro do fornecedor e as contas a pagar.</div>
+      <p>No dia a dia, a entrada de mercadorias fica muito mais rápida: as notas emitidas para a sua empresa chegam direto da SEFAZ e entram no sistema sem digitação. Nas entregas e serviços, o técnico ou montador recebe a O.S. ou o romaneio pelo WhatsApp e abre no celular.</p>
+      <p>Cada usuário tem permissões individuais de acesso: você decide quem pode vender, emitir nota, cancelar, ver o financeiro ou os relatórios gerenciais.</p>
+    </div>
+    <div class="feature-list" id="funcionalidades">
+      <div class="feature-item">
+        <div class="feature-icon">🗂️</div>
+        <div><h4>Cadastros Completos</h4><p>Clientes e fornecedores com consulta automática de CNPJ e CEP, produtos com dados fiscais, plano de contas e categorias.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📥</div>
+        <div><h4>Movimentos · Entrada pela SEFAZ</h4><p>As notas emitidas para o seu CNPJ (MD-e) entram em poucos cliques, sem digitar item por item, alimentando estoque e contas a pagar.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🧾</div>
+        <div><h4>NF-e, NFC-e e Rotinas Fiscais</h4><p>Emissão direto na SEFAZ, cancelamento, carta de correção, inutilização, DANFE, XML com protocolo e Sintegra.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🛒</div>
+        <div><h4>PDV · Venda Rápida</h4><p>O caixa passa os produtos pelo código de barras e recebe em dinheiro e cartão, com troco e cupom na hora.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📦</div>
+        <div><h4>Estoque</h4><p>Estoque por loja com baixa automática na venda, reservas, balanço e curva ABC.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🛠️</div>
+        <div><h4>Ordem de Serviço e Romaneio</h4><p>O.S., romaneio de entrega e montagem e agenda; o técnico ou montador recebe o link pelo WhatsApp.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💰</div>
+        <div><h4>Financeiro, Caixa e Bancos</h4><p>Contas a pagar e receber, lançamentos, extrato bancário importado e conciliação bancária.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <div><h4>Fluxo de Caixa e DRE</h4><p>Resultado mensal e anual, DFC e rateio de custos por unidade, para decidir com números.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <div><h4>CRM · Relacionamento</h4><p>Atendimentos, histórico do cliente, cobrança e relatórios de prestações e vencidas.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👥</div>
+        <div><h4>Funcionários</h4><p>Cadastro dos funcionários, local de trabalho por loja, ativos e demitidos e contato pelo WhatsApp.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+        <div><h4>Trabalho · Equipe com IA</h4><p>Tarefas, agenda, painel por colaborador e atas de reunião redigidas por inteligência artificial.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔒</div>
+        <div><h4>Permissões por Usuário</h4><p>Acesso individual por módulo e por ação, customizado para cada empresa.</p></div>
+      </div>
+      <div class="feature-item card-destaque">
+        <div class="feature-icon">🚐</div>
+        <div><h4>Gestão de Transportes<span class="novo">Novo</span></h4><p>Corridas de passageiros e cargas, trajeto das viagens, abastecimento com consumo (km/l), gastos por viagem, troca de óleo, vencimentos de veículos e motoristas e resumo de cada viagem pelo WhatsApp. <a href="#sob-medida">Ver detalhes →</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules" id="modulos">
+  <div class="container">
+    <h2 class="section-title">Módulos do sistema</h2>
+    <p class="section-sub">Escolha o que sua empresa precisa: todos os módulos funcionam juntos, na mesma base de dados.</p>
+    <div class="grid-4">
+      <div class="module-card"><div class="feature-icon">🗂️</div><h4>Cadastros</h4><p>Clientes e fornecedores com consulta automática de CNPJ e CEP, produtos, plano de contas, categorias, natureza de operação e operadores com permissões.</p></div>
+      <div class="module-card"><div class="feature-icon">📥</div><h4>Movimentos</h4><p>Entrada de nota direto da SEFAZ: o sistema busca as notas emitidas para o seu CNPJ, você manifesta e dá entrada em poucos cliques, sem digitar item por item. Estoque, fornecedor e contas a pagar são atualizados na hora.</p></div>
+      <div class="module-card"><div class="feature-icon">📦</div><h4>Estoque</h4><p>Produtos com dados fiscais (NCM, CEST, CST), estoque por loja, reservas, balanço e curva ABC.</p></div>
+      <div class="module-card"><div class="feature-icon">🧾</div><h4>NF-e e NFC-e</h4><p>Emissão, consultas na SEFAZ, eventos, números usados e pacote para a contabilidade.</p></div>
+      <div class="module-card"><div class="feature-icon">🛒</div><h4>PDV e Pedidos</h4><p>Venda rápida no caixa, pedido de salão, caixa e faturamento.</p></div>
+      <div class="module-card"><div class="feature-icon">🛠️</div><h4>Ordem de Serviço e Romaneio</h4><p>O.S. e romaneio de entrega e montagem, agenda de serviços e documentos anexados. O técnico ou montador recebe o link pelo WhatsApp e abre no celular, sem precisar de senha.</p></div>
+      <div class="module-card"><div class="feature-icon">🏦</div><h4>Bancos e Conciliação</h4><p>Extrato importado do banco, conciliação com sugestões e conta corrente.</p></div>
+      <div class="module-card"><div class="feature-icon">📊</div><h4>Fluxo de Caixa e DRE</h4><p>Demonstrativo de resultado mensal e anual, DFC, extrato por cliente ou fornecedor e rateio de custos por unidade.</p></div>
+      <div class="module-card"><div class="feature-icon">🤝</div><h4>Clientes e CRM</h4><p>Histórico de atendimentos, ficha do cliente, cobrança com régua de contato e relatórios de vencidas.</p></div>
+      <div class="module-card"><div class="feature-icon">👥</div><h4>Funcionários</h4><p>Cadastro completo dos funcionários, local de trabalho por loja, situação (ativos e demitidos) e contato direto pelo WhatsApp.</p></div>
+      <div class="module-card"><div class="feature-icon">📋</div><h4>Sintegra e Inventário</h4><p>Geração do arquivo do Sintegra e inventário de estoque com relatórios.</p></div>
+      <div class="module-card"><div class="feature-icon">✅</div><h4>Trabalho · Equipe</h4><p>Tarefas, agenda, painel por colaborador, atendimentos e atas de reunião geradas por inteligência artificial.</p></div>
+      <div class="module-card card-destaque"><div class="feature-icon">🚐</div><div><h4>Gestão de Transportes<span class="novo">Novo</span></h4><p>Para quem transporta passageiros ou cargas: agendamento e despacho de corridas, trajeto de viagens de vários dias, abastecimento e consumo, gastos ligados a cada viagem, troca de óleo, alertas de documentos e o resumo de cada viagem enviado aos responsáveis pelo WhatsApp. O motorista usa no celular. <a href="#sob-medida">Ver detalhes →</a></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="trabalho" id="trabalho">
+  <div class="container">
+    <span class="eyebrow">Destaque · Módulo Trabalho</span>
+    <h2 class="section-title">A equipe alinhada e as entregas acompanhadas</h2>
+    <p class="section-sub">O módulo Trabalho organiza a rotina da equipe e mostra ao gestor o que está sendo feito, o que está atrasado e quem precisa de apoio.</p>
+    <div class="trab-grid">
+      <div class="trab-item"><h4>Tarefas e Painel</h4><p>Tarefas com prazo e prioridade, quadro por colaborador e histórico de andamento de cada uma.</p></div>
+      <div class="trab-item"><h4>Agenda e Post-it</h4><p>Visão de calendário e lembretes do que vence no dia, para ninguém esquecer uma entrega.</p></div>
+      <div class="trab-item"><h4>Alerta ao Gestor</h4><p>Ao entrar no sistema, o supervisor vê as tarefas da equipe que vencem hoje ou estão atrasadas.</p></div>
+      <div class="trab-item"><h4>Atendimentos e Matrículas</h4><p>Registro de cada atendimento e de cada venda, com relatório gerencial por colaborador.</p></div>
+      <div class="trab-item"><h4>Contratos e Patrimônio</h4><p>Arquivo de contratos com resumo automático por IA e inventário de equipamentos.</p></div>
+      <div class="trab-item"><h4>Mural de Incentivo</h4><p>Mensagens de reconhecimento para a equipe ou para um colaborador, exibidas ao entrar.</p></div>
+    </div>
+    <div class="trab-ia">
+      <div class="why-icon">🎙️</div>
+      <div>
+        <h3>Atas de reunião com inteligência artificial</h3>
+        <p>Grave a reunião e transcreva (ou fale direto no sistema): a IA redige a ata formal, cria as tarefas de cada participante com os prazos, arquiva o documento e prepara a mensagem de WhatsApp para cada pessoa, com as entregas e as datas dela.</p>
+        <div class="passos"><span>Áudio da reunião</span><span>→ Ata em Word</span><span>→ Tarefas com prazo</span><span>→ WhatsApp para cada participante</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="porque">
+  <div class="container">
+    <h2 class="section-title">Por que escolher o ZeruIA?</h2>
+    <p class="section-sub">Uma gestão comercial inteligente, feita para o crescimento do seu negócio.</p>
+    <div class="grid-4b">
+      <div class="why-card"><div class="why-icon">🔗</div><h4>Integração Total</h4><p>Venda, estoque, fiscal e financeiro atualizados ao mesmo tempo, sem digitar duas vezes.</p></div>
+      <div class="why-card"><div class="why-icon">🌐</div><h4>Acesso de Qualquer Lugar</h4><p>Sistema na web: sem instalação, sem servidor na empresa e com backup.</p></div>
+      <div class="why-card"><div class="why-icon">🤖</div><h4>Inteligência Artificial</h4><p>Atas redigidas a partir da gravação da reunião, resumo de contratos e pesquisa dentro dos documentos.</p></div>
+      <div class="why-card"><div class="why-icon">🧑‍💻</div><h4>Suporte Próximo</h4><p>Atendimento direto com quem desenvolve o sistema, pelo WhatsApp.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="medida" id="sob-medida">
+  <div class="container">
+    <div class="medida-top">
+      <div class="medida-txt">
+        <span class="eyebrow" style="color:#0e9a78;">Sistemas sob medida</span>
+        <h2 class="section-title">Seu processo, automatizado com inteligência artificial</h2>
+        <p class="section-sub">Além do ZeruIA, desenvolvemos sistemas personalizados para a realidade de cada empresa. Usamos inteligência artificial para automatizar tarefas repetitivas, acelerar decisões, eliminar retrabalho e transformar processos manuais em fluxos simples, rastreáveis e seguros.</p>
+      </div>
+      <div class="medida-pontos">
+        <span>Feito para a rotina da sua empresa</span>
+        <span>Integração com WhatsApp e com o ZeruIA</span>
+        <span>Acesso pela web, com senha e perfis</span>
+        <span>Estrutura pronta para crescer</span>
+      </div>
+    </div>
+    <div class="projeto">
+      <div class="projeto-cab"><h3>Gestão de Transportes</h3><span class="selo-ok">Disponível</span></div>
+      <p>Para empresas que transportam passageiros e cargas (arame, insumos para fazendas, encomendas): corridas, veículos, motoristas, gastos e atendimento em um só sistema na web, no computador e no celular do motorista.</p>
+      <div class="proj-grid">
+        <div><h4>Corridas e transportes</h4><ul>
+          <li>Agendamento e despacho com motorista e veículo, da solicitação à conclusão</li>
+          <li>Trajeto de viagens de vários dias: saída, pernoites, embarques, desembarques e retornos</li>
+          <li>Início e fim com a quilometragem do veículo</li>
+        </ul></div>
+        <div><h4>Resumo da viagem</h4><ul>
+          <li>Ao concluir: tempo, km rodados, consumo, gastos e custo por km</li>
+          <li>Situação da troca de óleo do veículo</li>
+          <li>Publicado no mural e enviado ao gerente e ao gestor pelo WhatsApp</li>
+        </ul></div>
+        <div><h4>Combustível e gastos</h4><ul>
+          <li>Abastecimento por placa com consumo (km/l) calculado automaticamente</li>
+          <li>Relatório de médias por veículo, motorista e mês, com gráficos</li>
+          <li>Cada gasto ligado à sua viagem pela data e pelo motorista, sem digitação</li>
+        </ul></div>
+        <div><h4>Veículos e motoristas</h4><ul>
+          <li>Alertas de seguro, licenciamento, IPVA, revisão e troca de óleo</li>
+          <li>CNH, exame toxicológico e ASO com aviso de vencimento</li>
+          <li>Histórico completo e jornada de cada motorista</li>
+        </ul></div>
+        <div><h4>Atendimento pelo WhatsApp</h4><ul>
+          <li>Pedidos de transporte por um formulário que o cliente preenche no celular</li>
+          <li>Mensagens prontas com um clique: "sua corrida foi agendada", "estamos a caminho"</li>
+          <li>Aviso ao motorista com todos os dados da corrida</li>
+        </ul></div>
+        <div><h4>Gestão e segurança</h4><ul>
+          <li>Relatórios por motorista, rota, veículo e cliente, com exportação para Excel</li>
+          <li>Acesso por perfil: gestor, gerente e motorista (só as próprias corridas)</li>
+          <li>Cada corrida, gasto e recebimento registrado e auditável</li>
+        </ul></div>
+      </div>
+      <p class="proj-proximo"><b>Próximos passos possíveis:</b> recebimento de pedidos direto no WhatsApp, estoque de materiais transportados, documentos fiscais, rotas otimizadas e integração com a contabilidade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="duvidas">
+  <div class="container">
+    <h2 class="section-title">Dúvidas frequentes</h2>
+    <div class="faq-list">
+      <details><summary>Preciso instalar alguma coisa?</summary><p>Não. O ZeruIA funciona no navegador (Chrome, Edge...), em qualquer computador com internet. Para a emissão fiscal basta o certificado digital A1 da empresa.</p></details>
+      <details><summary>Já uso o CRES-NF-e no computador. Perco meus dados?</summary><p>Não. A versão web usa a mesma base de dados do CRES-NF-e, então os cadastros, notas, estoque e financeiro continuam os mesmos.</p></details>
+      <details><summary>O sistema emite NF-e e NFC-e?</summary><p>Sim, direto com a SEFAZ: autorização, cancelamento, carta de correção, inutilização, DANFE e o XML com protocolo para a contabilidade.</p></details>
+      <details><summary>Vocês desenvolvem sistemas sob medida?</summary><p>Sim. Levantamos o processo da sua empresa e construímos um sistema web próprio, com automações e inteligência artificial, que pode conversar com o ZeruIA e com o WhatsApp. Um exemplo é a Gestão de Transportes, já em uso: corridas, trajeto das viagens, combustível, gastos, troca de óleo e resumo de cada viagem pelo WhatsApp.</p></details>
+      <details><summary>Como funciona a demonstração?</summary><p>Preencha o formulário abaixo ou chame no WhatsApp. Combinamos um horário e mostramos o sistema funcionando com as rotinas da sua empresa, sem compromisso.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contato">
+  <div class="container">
+    <div class="cta-left">
+      <h2>Pronto para modernizar sua gestão?</h2>
+      <p>Solicite uma demonstração gratuita e veja como o ZeruIA integra faturamento, emissão fiscal, estoque, financeiro e a rotina da equipe em um só lugar. Precisa de um sistema sob medida? Conte o seu processo que a gente desenha a solução.</p>
+      <div class="cta-contatos">
+        <a href="https://wa.me/5533988013990?text=Ol%C3%A1!%20Vi%20o%20site%20da%20ZeruIA%20e%20gostaria%20de%20uma%20demonstra%C3%A7%C3%A3o." target="_blank" rel="noopener">💬 WhatsApp (33) 98801-3990</a>
+        <a href="mailto:lourencio.gomes@hotmail.com?subject=Demonstra%C3%A7%C3%A3o%20ZeruIA">✉️ lourencio.gomes@hotmail.com</a>
+      </div>
+    </div>
+    <div class="cta-form" id="ctaForm">
+      <h3>Solicite uma Demonstração</h3>
+      <form id="demoForm" novalidate>
+        <input type="text" name="nome" placeholder="Nome *" required maxlength="80" autocomplete="name">
+        <input type="text" name="empresa" placeholder="Empresa" maxlength="80" autocomplete="organization">
+        <div class="linha">
+          <input type="email" name="email" placeholder="E-mail *" required maxlength="100" autocomplete="email">
+          <input type="tel" name="telefone" placeholder="Telefone / WhatsApp *" required maxlength="20" autocomplete="tel">
+        </div>
+        <input type="text" name="cidade" placeholder="Cidade / UF" maxlength="60">
+        <textarea name="mensagem" placeholder="O que você gostaria de ver na demonstração? (opcional)" maxlength="800"></textarea>
+        <input type="text" name="_honey" class="mel" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-erro" id="formErro"></div>
+        <button type="submit" id="btnEnviar">Enviar solicitação</button>
+        <p class="nota">Seus dados são usados só para entrarmos em contato sobre a demonstração.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">Zeru<span>IA</span></div>
+    <div class="contatos">
+      <a href="https://wa.me/5533988013990" target="_blank" rel="noopener">WhatsApp (33) 98801-3990</a>
+      <a href="mailto:lourencio.gomes@hotmail.com">lourencio.gomes@hotmail.com</a>
+    </div>
+    <p>© 2026 ZeruIA (antiga Minas Fiscal) · Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<a class="zap-flutuante" href="https://wa.me/5533988013990?text=Ol%C3%A1!%20Vi%20o%20site%20da%20ZeruIA%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Falar no WhatsApp" title="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2.1 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6 0-5.9 4.9-10.7 11-10.7s11 4.8 11 10.7-4.9 10.8-10.9 10.8zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.4c.2.2 2.3 3.5 5.6 4.9.8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.7-.4z"/></svg>
+</a>
+
+<script>
+  (function(){
+    var ZAP = '5533988013990';
+    // E-mail da solicitação pelo FormSubmit (formsubmit.co): o primeiro envio
+    // manda um e-mail de ativação para este endereço - é só confirmar uma vez.
+    var DESTINO = 'https://formsubmit.co/ajax/lourencio.gomes@hotmail.com';
+
+    var menu = document.getElementById('navLinks');
+    document.getElementById('menuToggle').addEventListener('click', function(){ menu.classList.toggle('open'); });
+    menu.addEventListener('click', function(e){ if (e.target.tagName === 'A') menu.classList.remove('open'); });
+
+    var form = document.getElementById('demoForm');
+    var erro = document.getElementById('formErro');
+    function mostraErro(t){ erro.textContent = t; erro.style.display = t ? 'block' : 'none'; }
+    function textoZap(d){
+      return 'Olá! Gostaria de uma demonstração do ZeruIA.\n\n' +
+        'Nome: ' + d.nome + (d.empresa ? '\nEmpresa: ' + d.empresa : '') +
+        '\nE-mail: ' + d.email + '\nTelefone: ' + d.telefone +
+        (d.cidade ? '\nCidade: ' + d.cidade : '') + (d.mensagem ? '\n\n' + d.mensagem : '');
+    }
+    function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      mostraErro('');
+      if (form._honey.value) return;   // robô preencheu o campo escondido
+      var d = {
+        nome: form.nome.value.trim(), empresa: form.empresa.value.trim(), email: form.email.value.trim(),
+        telefone: form.telefone.value.trim(), cidade: form.cidade.value.trim(), mensagem: form.mensagem.value.trim()
+      };
+      if (!d.nome) { mostraErro('Informe o seu nome.'); form.nome.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { mostraErro('Informe um e-mail válido.'); form.email.focus(); return; }
+      if (d.telefone.replace(/\D/g, '').length < 10) { mostraErro('Informe o telefone com DDD.'); form.telefone.focus(); return; }
+      var linkZap = 'https://wa.me/' + ZAP + '?text=' + encodeURIComponent(textoZap(d));
+      var btn = document.getElementById('btnEnviar');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      var fim = function(okEmail){
+        document.getElementById('ctaForm').innerHTML =
+          '<div class="form-ok"><h3>' + (okEmail ? '✅ Solicitação enviada!' : 'Quase lá!') + '</h3>' +
+          '<p>' + (okEmail ? 'Obrigado, ' + esc(d.nome.split(' ')[0]) + '! Recebemos seus dados e em breve entraremos em contato.' :
+            'Não conseguimos enviar o e-mail agora. Toque no botão abaixo para mandar a solicitação pelo WhatsApp.') + '</p>' +
+          '<a class="btn btn-zap" href="' + esc(linkZap) + '" target="_blank" rel="noopener">💬 ' + (okEmail ? 'Agilizar pelo WhatsApp' : 'Enviar pelo WhatsApp') + '</a></div>';
+      };
+      fetch(DESTINO, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Pedido de demonstração ZeruIA - ' + d.nome + (d.empresa ? ' (' + d.empresa + ')' : ''),
+          _template: 'table', _replyto: d.email, _captcha: 'false',
+          Nome: d.nome, Empresa: d.empresa || '-', 'E-mail': d.email, 'Telefone / WhatsApp': d.telefone,
+          'Cidade / UF': d.cidade || '-', Mensagem: d.mensagem || '-',
+          'Responder pelo WhatsApp': 'https://wa.me/55' + d.telefone.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '')
+        })
+      }).then(function(r){ return r.json(); }).then(function(r){
+        fim(r && (r.success === true || r.success === 'true'));
+      }).catch(function(){ fim(false); });
+    });
+  })();
+</script>
+</body>
+</html>
