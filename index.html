@@ -64,7 +64,7 @@
   .hero-checks{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-size:13.5px;color:#c9d6d2;}
   .hero-checks span::before{content:"✓ ";color:var(--accent1);font-weight:700;}
   .hero-visual{flex:1 1 100%;position:relative;display:flex;gap:30px;align-items:center;flex-wrap:wrap;}
-  .hero-foto{flex:1.5 1 420px;min-width:0;width:100%;height:auto;}
+  .hero-foto{flex:1.5 1 420px;min-width:0;width:100%;height:auto;border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,.35);}
   .hero-visual .mock-card{flex:1 1 340px;}
   .mock-card{background:#fff;border-radius:20px;padding:22px;color:var(--text);box-shadow:0 30px 60px rgba(0,0,0,.35);}
   .mock-card h4{font-size:14px;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
@@ -98,6 +98,7 @@
 
   .modules{background:var(--light);}
   .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .module-img{display:block;width:100%;height:auto;margin-top:14px;}
   .module-card{background:#fff;border-radius:16px;padding:26px 22px;text-align:left;box-shadow:0 6px 18px rgba(20,50,45,.06);}
   .module-card .feature-icon{margin-bottom:14px;}
   .card-destaque{grid-column:1/-1;display:flex;gap:18px;align-items:flex-start;border:2px solid var(--accent1);}
@@ -255,7 +256,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img src="zeruia-foto.webp" alt="Sistema ZeruIA - Gestão de Negócios" class="hero-foto" width="1280" height="720">
+      <img src="zeruia-foto.jpg" alt="Sistema ZeruIA - Gestão de Negócios" class="hero-foto" width="1280" height="720">
       <div class="mock-card">
         <h4>ZeruIA · CRES-NF-e Web <span class="mock-tag">Online</span></h4>
         <div class="mock-row"><span>Emissão de NF-e / NFC-e</span><b>Direto na SEFAZ</b></div>
@@ -351,7 +352,7 @@
     <h2 class="section-title">Módulos do sistema</h2>
     <p class="section-sub">Escolha o que sua empresa precisa: todos os módulos funcionam juntos, na mesma base de dados.</p>
     <div class="grid-4">
-      <div class="module-card"><div class="feature-icon">🗂️</div><h4>Cadastros</h4><p>Clientes e fornecedores com consulta automática de CNPJ e CEP, produtos, plano de contas, categorias, natureza de operação e operadores com permissões.</p></div>
+      <div class="module-card"><div class="feature-icon">🗂️</div><h4>Cadastros</h4><p>Clientes e fornecedores com consulta automática de CNPJ e CEP, produtos, plano de contas, categorias, natureza de operação e operadores com permissões.</p><img src="zeruia-foto.webp" alt="Tela do sistema ZeruIA" class="module-img" width="1280" height="720" loading="lazy"></div>
       <div class="module-card"><div class="feature-icon">📥</div><h4>Movimentos</h4><p>Entrada de nota direto da SEFAZ: o sistema busca as notas emitidas para o seu CNPJ, você manifesta e dá entrada em poucos cliques, sem digitar item por item. Estoque, fornecedor e contas a pagar são atualizados na hora.</p></div>
       <div class="module-card"><div class="feature-icon">📦</div><h4>Estoque</h4><p>Produtos com dados fiscais (NCM, CEST, CST), estoque por loja, reservas, balanço e curva ABC.</p></div>
       <div class="module-card"><div class="feature-icon">🧾</div><h4>NF-e e NFC-e</h4><p>Emissão, consultas na SEFAZ, eventos, números usados e pacote para a contabilidade.</p></div>
