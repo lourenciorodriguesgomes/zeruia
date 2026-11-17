@@ -98,8 +98,6 @@
 
   .modules{background:var(--light);}
   .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
-  .module-img-card{display:flex;align-items:center;justify-content:center;padding:14px;}
-  .module-img-card img{display:block;width:100%;height:auto;}
   .module-card{background:#fff;border-radius:16px;padding:26px 22px;text-align:left;box-shadow:0 6px 18px rgba(20,50,45,.06);}
   .module-card .feature-icon{margin-bottom:14px;}
   .card-destaque{grid-column:1/-1;display:flex;gap:18px;align-items:flex-start;border:2px solid var(--accent1);}
@@ -283,6 +281,7 @@
 <section id="sobre">
   <div class="container about">
     <div class="about-text">
+      <img src="zeruia-logo.jpg" alt="ZeruIA" class="about-logo" width="760" height="566" loading="lazy">
       <span class="eyebrow" style="color:#0e9a78;">Sobre o sistema</span>
       <h2 class="section-title">Software de Gestão Empresarial</h2>
       <p>O ZeruIA é um software de gestão totalmente integrado: controla estoque, cadastros, funcionários, ordens de serviço, emissão de NF-e e NFC-e, rotinas fiscais, relacionamento com clientes (CRM), caixa, bancos, gestão de transportes e muito mais.</p>
@@ -354,7 +353,6 @@
     <p class="section-sub">Escolha o que sua empresa precisa: todos os módulos funcionam juntos, na mesma base de dados.</p>
     <div class="grid-4">
       <div class="module-card"><div class="feature-icon">🗂️</div><h4>Cadastros</h4><p>Clientes e fornecedores com consulta automática de CNPJ e CEP, produtos, plano de contas, categorias, natureza de operação e operadores com permissões.</p></div>
-      <div class="module-card module-img-card"><img src="zeruia-foto.webp" alt="Tela do sistema ZeruIA" width="1280" height="720" loading="lazy"></div>
       <div class="module-card"><div class="feature-icon">📥</div><h4>Movimentos</h4><p>Entrada de nota direto da SEFAZ: o sistema busca as notas emitidas para o seu CNPJ, você manifesta e dá entrada em poucos cliques, sem digitar item por item. Estoque, fornecedor e contas a pagar são atualizados na hora.</p></div>
       <div class="module-card"><div class="feature-icon">📦</div><h4>Estoque</h4><p>Produtos com dados fiscais (NCM, CEST, CST), estoque por loja, reservas, balanço e curva ABC.</p></div>
       <div class="module-card"><div class="feature-icon">🧾</div><h4>NF-e e NFC-e</h4><p>Emissão, consultas na SEFAZ, eventos, números usados e pacote para a contabilidade.</p></div>
